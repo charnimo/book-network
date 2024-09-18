@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/book_social_network
     username: postgres
-    password: password
+    password: admin
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -36,3 +36,8 @@ application:
       expiration: 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
+  mailing:
+    frontend:
+      activation-url: http://localhost:420/activate-account
+server:
+  port: 8088
