@@ -1,6 +1,8 @@
 package com.momo.book.User;
 
 import com.momo.book.Role.Role;
+import com.momo.book.book.Book;
+import com.momo.book.history.BookTransactionHistory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -42,6 +44,10 @@ public class User implements UserDetails, Principal {
     private boolean enabled;
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
+    @OneToMany(mappedBy = "owner")
+    private List<Book> books;
+    @OneToMany(mappedBy = "user")
+    private List<BookTransactionHistory> histories;
     public String fullName() {
         return getFirstname() + " " + getLastname();
     }
